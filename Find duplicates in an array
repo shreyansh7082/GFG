@@ -1,0 +1,14 @@
+class Solution {
+    public static ArrayList<Integer> duplicates(int arr[], int n) {
+        int[] v = new int[(int)10e5 + 1];
+        ArrayList<Integer> r = new ArrayList<>();
+        for (int x = 0; x < arr.length; x++) {
+            // Icnrement the element
+            // If repeated more than one, ignore it
+            if (++v[arr[x]] == 2) r.add(arr[x]);
+        }
+        if (r.isEmpty()) r.add(-1);
+        Collections.sort(r); // Sort the list will take more time, but the challenge check by numeric order
+        return r;
+    }
+}
