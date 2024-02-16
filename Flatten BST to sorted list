@@ -1,0 +1,17 @@
+class Solution {
+    Node prev;
+    void inorder(Node root){
+        if(root==null){
+            return;
+        }
+        inorder(root.right);
+        root.right = prev;
+        prev = root;
+        inorder(root.left);
+        root.left = null;
+    }
+    public Node flattenBST(Node root) {
+        inorder(root);
+        return prev;
+    }
+}
