@@ -1,0 +1,33 @@
+class Solution{
+    public static int kthSmallest(int[] arr, int l, int r, int k) 
+    { 
+        
+        int result = quickSelect(arr,l,r,k);
+        return result;
+    } 
+    private static int quickSelect(int arr[],int l,int r,int k){
+        int i = l;
+        int p = l;
+        while(i<r){
+            if(arr[r]>arr[i]){
+                int temp = arr[i];
+                arr[i] = arr[p];
+                arr[p] = temp;
+                p++;
+            }
+            i++;
+        }
+        int temp = arr[r];
+        arr[r] = arr[p];
+        arr[p] = temp;
+        if((p+1)==k){
+            return arr[p];
+        }
+        else if((p+1)>k){
+            return quickSelect(arr,l,p-1,k);
+        }
+        else{
+            return quickSelect(arr,p+1,r,k);
+        }
+    }
+}
